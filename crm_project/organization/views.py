@@ -22,7 +22,7 @@ class ListHardware(generics.ListAPIView):
     serializer_class = HardwareSerializer
     def get_queryset(self):
         qs = Hardware.objects.all()
-        qs = qs.filter(pk != 1)
+        qs = qs.filter(~Q(pk__in = '5'))
         qs =  qs.exclude(name = '')
 
         #qs = [q for q in qs if q.name != '']
